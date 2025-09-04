@@ -1,0 +1,48 @@
+*{
+    background-color: black;
+    color: white;
+}
+
+.text{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.default{
+    background-color: gray;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+/* stop{
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.atencion{
+    background-color: rgb(255, 251, 0);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.go{
+    background-color: rgb(9, 255, 0);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+} */
+
