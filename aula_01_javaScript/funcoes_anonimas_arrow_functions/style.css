@@ -1,0 +1,17 @@
+* {
+    text-align: center;
+    justify-content: center;
+    background: fixed;
+    background-color: rgb(255, 255, 255);
+}
+
+.bloco {
+    border: 1px solid #ddd;
+    padding: 4rem;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    color: rgb(195, 0, 255);
+}
