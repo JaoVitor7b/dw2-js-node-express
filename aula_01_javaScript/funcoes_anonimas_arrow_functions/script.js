@@ -28,8 +28,7 @@ const calculadora = (num1, operador, num2) => {
   return eval(`${num1} ${operador} ${num2}`);
 };
 
-//EVAL: É UMA FUNCAO NATIVA DO JAVASCRIPT QUE PERMITE REALIZAR
-//CALCULOS MATEMATICOS A PARTIR DE 2 NUMEROS E UM OPERADOR.
+
 const num1 = 8;
 const operador = "*";
 const num2 = 2;
@@ -45,20 +44,7 @@ const imediata = (function () {
 
 
 // FUNÇÃO IMEDIATA - COM PARÂMETROS
-const LoadUser = (function (user) {
-    document.write(`
-        <p ">
-            Carregando as informações do usuário ${user}
-        </p>
-    `);
-
-    // Mostrando as informações após 3 segundos
-    setTimeout(() => {
-        document.write(`
-            <p>Nome: João Vitor</p>
-            <p>Idade: 19</p>
-        `);
-    }, 3000);
-
+const saudacao = (function (nome) {
+    console.log(`Olá, ${nome}! Seja bem-vindo(a)!`);
 })("João");
 

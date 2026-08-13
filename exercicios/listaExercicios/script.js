@@ -1,8 +1,8 @@
 //1 -FUNCAO SIMPLES
-function informaGeral (){
+function informaGeral() {
   document.write("Joao");
-  document.write("18")
-  document.write("Sete Barras")
+  document.write("18");
+  document.write("Sete Barras");
 }
 
 //2 - FUNÇÃO COM PARAMETRO
@@ -14,7 +14,6 @@ const n2 = 9;
 
 document.write(`<p>O resultado da divisão é ${divisao(n1, n2)}</p>`);
 
-
 //3 - FUNCAO COM RETORNO
 function multiplicar(n1, n2, n3) {
   return n1 * n2 * n3;
@@ -23,7 +22,9 @@ const num1 = 4;
 const num2 = 3;
 const num3 = 9;
 
-document.write(`<p>O resultado da multiplicação é ${multiplicar(num1, num2, num3)}</p>`);
+document.write(
+  `<p>O resultado da multiplicação é ${multiplicar(num1, num2, num3)}</p>`,
+);
 
 //4 -FUNCAO COM MAIS DE UM RETORNO
 function anaIdade(idaAn) {
@@ -41,7 +42,7 @@ document.write(`<p>Você é ${anaIdade(idade)}</p>`);
 const nota1 = 8;
 const nota2 = 2;
 
-const resultado = function(x) {
+const resultado = function (x) {
   if (x > 5) {
     return "Aprovado";
   } else {
@@ -51,7 +52,7 @@ const resultado = function(x) {
 
 document.write(`<p>O aluno foi ${resultado(nota1 / nota2)}</p>`);
 
-//6 - Arrow function com parâmetro único 
+//6 - Arrow function com parâmetro único
 const triplo = (y) => {
   return y * 8;
 };
@@ -59,3 +60,30 @@ const triplo = (y) => {
 const y = 185;
 
 document.write(`<P ">O tripo de ${triplo(y)} é</P>`);
+
+//Arrow function com mais de um parâmetro
+const calculadora = (nume1, nume2, nume3, nume4) => {
+  return (nume1 + nume2 + nume3 + nume4);
+};
+
+const nume1 = 8;
+const nume2 = 2;
+const nume3 = 9;
+const nume4 = 4;
+
+document.write(
+  `<p>O resultado é igual a ${calculadora(nume1, nume2, nume3, nume4)}</p>`,
+);
+
+//FUNCAO IMEDIATA (IIFE - IMEDIATELY INVOKED FUNCTION EXPRESSION)
+const LoadUser = (function (pessoa) {
+    document.write(
+
+    );
+
+    // Mostrando as informações após 3 segundos
+        document.write(`
+            <p>Olá João tudo bem?</p>
+        `);
+
+})("João");
