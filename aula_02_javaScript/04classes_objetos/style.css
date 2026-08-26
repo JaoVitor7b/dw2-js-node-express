@@ -1,0 +1,41 @@
+*{
+    background-color: black;
+    justify-items: center;
+    color: azure;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.card {
+  text-align: center;
+  background-color: #a100af;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 15px;
+  max-width: 100%;
+  width: 300px;     
+  word-wrap: break-word; 
+  transition: transform 0.5s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.cardjs {
+  text-align: center;
+  background-color: #6000af;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 15px;
+  max-width: 100%;  
+  width: 300px;  
+  word-wrap: break-word;
+  transition: transform 0.5s;
+}
+
+.cardjs:hover {
+  transform: scale(1.1);
+}
