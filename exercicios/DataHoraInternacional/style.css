@@ -1,14 +1,12 @@
 *{
-    background-color: black;
     justify-items: center;
-    color: azure;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
 }
 
 .card {
   text-align: center;
-  background-color: #a100af;
+  background-color: #00b7ff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
@@ -25,7 +23,7 @@
 
 .cardjs {
   text-align: center;
-  background-color: #6000af;
+  background-color: #15d4bb;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
