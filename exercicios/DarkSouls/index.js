@@ -21,8 +21,8 @@ app.get("/enemies", (req, res) => {
   res.render("enemies");
 });
 
-app.get("/weapon", (req, res) => {
-  res.render("weapon");
+app.get("/history", (req, res) => {
+  res.render("history");
 });
 
 app.get("/levels", (req, res) => {
