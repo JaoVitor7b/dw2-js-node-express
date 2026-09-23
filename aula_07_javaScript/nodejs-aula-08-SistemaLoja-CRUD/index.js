@@ -1,59 +1,58 @@
-import express from "express"; // Forma de importação do ES6
+import express from "express";
 
-//Importando o arquivo de conexao do Squelize
-import connetion from "./config/sequelize-config.js";
+import mysql from "mysql2/promise";
 
-const app = express(); // Criando uma instância do Express
+import connection, { databaseConfig } from "./config/sequelize-config.js";
 
-//Configurações do Express
-// Define o EJS como Renderizador de páginas
-app.set("view engine", "ejs");
-// Define o uso da pasta "public" para uso de arquivos estáticos
-app.use(express.static("public"));
-// ROTA PRINCIPAL
-app.get("/", function (req, res) {
-  res.render("index");
-});
+import Produto from "./models/Produto.js";
+import Cliente from "./models/Cliente.js";
+import Pedido from "./models/Pedido.js";
 
-//Realizando conexão
-connetion
-  .authenticate()
-  .then(() => {
-    console.log("Conexão de dados realizada com sucesso!");
-    //Falha na promessa:
-  })
-  .catch((error) => {
-    console.log(
-      `"Ocorreu um erro ao conectar ao bando de dados. Erro ${error}`,
-    );
-  });
-
-// Importando o Controller de Produto
 import ProdutoController from "./controllers/ProdutoController.js";
-// Importando o Controller de Produto
+
 import PedidoController from "./controllers/Pedido.Controller.js";
-// Importando o Controller de Produto
+
 import ClienteController from "./controllers/ClienteController.js";
 
-// CONFIGURAÇÕES DO EXPRESS
-// Configurando o EJS
-app.set("view engine", "ejs"); // EJS renderiza as páginas do site
-// Configurando a pasta 'PUBLIC' para arquivos estáticos
-app.use(express.static("public"));
-// Configurando as rotas
-// Inicializando as rotas de Produto
-app.use("/", ProdutoController);
-// Inicializando as rotas de Pedido
-app.use("/", PedidoController);
-// Inicializando as rotas de Cliente
-app.use("/", ClienteController);
+const app = express();
 
-// INICIA O SERVIDOR NA PORTA 8080
-const port = 8080;
-app.listen(port, function (erro) {
-  if (erro) {
-    console.log("Ocorreu um erro!");
-  } else {
-    console.log(`Servidor iniciado com sucesso em http://localhost:${port}`);
+app.set("view engine", "ejs");
+
+app.use(express.static("public"));
+
+app.get("/", (req, res) => res.render("index"));
+app.use(ProdutoController, PedidoController, ClienteController);
+
+async function iniciar() {
+  // Cria o banco antes de conectar o Sequelize a ele.
+  const servidor = await mysql.createConnection({
+    host: databaseConfig.host,
+    user: databaseConfig.username,
+    password: databaseConfig.password,
+  });
+  try {
+    await servidor.query(
+      `CREATE DATABASE IF NOT EXISTS \`${databaseConfig.database}\``,
+    );
+  } finally {
+    await servidor.end();
   }
+
+await connection.authenticate();
+await Cliente.sync();
+await Produto.sync();
+await Pedido.sync();
+  console.log(
+    `Banco de dados ${databaseConfig.database} conectado com sucesso!`,
+  );
+
+  const port = Number(process.env.PORT) || 8080;
+  app.listen(port, () => {
+    console.log(`Servidor iniciado em http://localhost:${port}`);
+  });
+}
+
+iniciar().catch((error) => {
+  console.error("Erro ao iniciar a aplicação:", error);
+  process.exitCode = 1;
 });

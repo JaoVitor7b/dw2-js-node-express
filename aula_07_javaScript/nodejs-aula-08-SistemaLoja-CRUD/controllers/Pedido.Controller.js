@@ -3,17 +3,18 @@ import express from "express";
 // router(); método do Express para criar rotas
 const router = express.Router();
 
+import Pedido from "../models/Pedido.js";
+
 // ROTA PEDIDOS
-router.get("/pedidos",function(req,res){
-    const pedidos = [
-        {numero: "983721931", valor: 1200},
-        {numero: "983721932", valor: 900},
-        {numero: "983721933", valor: 3200},
-        {numero: "983721934", valor: 150}
-    ]
-    res.render("pedidos", {
-        pedidos: pedidos
-    })
-})
+router.get("/pedidos", async (req, res) => {
+  try {
+    const pedidos = await Pedido.findAll();
+    res.render("pedidos", { pedidos });
+  } catch (error) {
+    console.error("Erro ao consultar pedidos:", error);
+    res.status(500).send("Erro ao carregar os pedidos.");
+  }
+});
+
 
 export default router;
